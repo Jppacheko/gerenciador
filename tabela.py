@@ -28,7 +28,6 @@ def inserir_frase():
 
     cursor.execute('INSERT INTO frases (frase) VALUES (?)', (frase,))
     conexao.commit()
-    messagebox.showinfo("Sucesso", "Frase inserida com sucesso!")
     entrada_frase.delete(0, END)  # Limpar o campo após a inserção
 
 
@@ -53,8 +52,7 @@ def deletar_frase():
 
     try:
         cursor.execute('DELETE FROM frases WHERE id = ?', (id_frase,))
-        conexao.commit()
-        messagebox.showinfo("Sucesso", "Frase deletada com sucesso!")
+        conexao.commit() 
         entrada_id.delete(0, END)  # Limpar o campo após a deleção
     except sqlite3.Error as e:
         messagebox.showerror("Erro", f"Erro ao deletar a frase: {e}")
